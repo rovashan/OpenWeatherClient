@@ -1,27 +1,41 @@
-# OpenWeatherClient
+## Notes
+OpenWeatherMap client app written in Angular 8 with Material Design and Flex-Layout
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
+### Date
+16 March 2020
 
-## Development server
+### Location of deployed application
+https://openweatherclient.firebaseapp.com
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Time spent
+8 hours
 
-## Code scaffolding
+### Assumptions made
+Assuming 5 days inclusive of current day.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Shortcuts/Compromises made
+Validation should be added to prevent errors and improve user experience.
+API keys should, should reside in a central secure location.
 
-## Build
+### Stretch goals attempted
+Added responsive design.
+Added places autocomplete input to allow user to explore the weather information in other cities
+Deployed to Firebase
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Instructions to run assignment locally
+Install Angular CLI if not available.
+```sh
+npm install -g @angular/cli@8.3.25
+```
+Navigate to project directory and run the following commands. 
+```sh
+npm install
+ng serve
+```
 
-## Running unit tests
+### What did you not include in your solution that you want us to know about?
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Other information about your submission that you feel it's important that we know if applicable.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Your feedback on this technical challenge
+Quite a fun challenge.
