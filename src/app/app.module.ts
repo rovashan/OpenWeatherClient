@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatButtonModule,MatToolbarModule, MatIconModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
