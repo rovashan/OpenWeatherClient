@@ -1,17 +1,16 @@
-<mat-toolbar color="primary">
-    <span>OpenWeatherMap Client</span>
-</mat-toolbar>
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height:100vh">
+    <mat-toolbar color="primary">
+        <span>OpenWeatherMap Client</span>
+    </mat-toolbar>
 
-<div class="container">
-
-
-    <div class="flex-container" fxLayout="row" fxLayout.xs="column">
-        <input type="search" id="address-input" placeholder="Please enter city" />
-        <button mat-button>Get Forecast</button>
-
+    <div class="container" fxLayoutAlign="center center">
+        <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+            <input class="autocomplete" type="search" id="address-input" placeholder="Please enter city" />
+            <button mat-raised-button color="primary" fxLayoutAlign="center center" (click)="getForecast()">Get Forecast</button>
+        </div>
     </div>
 
-    <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center center" fxLayoutGap="10px">
         <mat-card *ngFor="let weather of weatherForecast" class="weather-forecast" fxLayout="column"
             fxLayoutAlign="center center">
             <mat-card-header>
@@ -20,36 +19,13 @@
 
             <mat-card-content fxLayout="column" fxLayoutAlign="center center">
 
-                <img src="http://openweathermap.org/img/w/{{ weather.icon}}.png" alt="wthr img" />
+                <img src="http://openweathermap.org/img/w/{{ weather.icon}}.png" />
 
                 <p>Min: {{ weather.min }}</p>
                 <p>Max: {{ weather.min }}</p>
             </mat-card-content>
 
         </mat-card>
-        <!-- <mat-card class="weather-forecast">2. Two</mat-card>
-        <mat-card class="weather-forecast">3. Three</mat-card>
-        <mat-card class="weather-forecast">4. Four</mat-card>
-        <mat-card class="weather-forecast">5. Five</mat-card>
-
-        <mat-card *ngFor="let film of dataResult.results" style="margin-top:10px;>
-            <mat-card-header>
-              <mat-card-title>{{film.title}}</mat-card-title>
-              <mat-card-subtitle>{{film.release_date}}
-              </mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="http://image.tmdb.org/t/p/w185/{{film.poster_path}}" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>
-                {{film.overview}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>
-                <mat-icon>favorite</mat-icon>
-              </button>
-              <button mat-button>SHARE</button>
-            </mat-card-actions>
-          </mat-card> -->
     </div>
+
 </div>

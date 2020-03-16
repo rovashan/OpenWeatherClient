@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './weather.service';
 import { WeatherModel } from './weather.model';
 
-declare var places:  any;
+declare var places: any;
 
 @Component({
   selector: 'app-weather',
@@ -11,28 +11,50 @@ declare var places:  any;
 })
 export class WeatherComponent implements OnInit {
 
-  lat = '-26.204103';
-  lon = '28.047304';
+  lat = '';
+  lng = '';
 
   weatherForecast: WeatherModel[] = [];
   places: any;
 
   constructor(private weatherService: WeatherService) { }
 
+
   ngOnInit() {
+    this.setupAutocomplete();
+    //this.seedData();
+    //this.getForecast();
+  }
+
+  seedData() {
+    for (let i = 0; i < 5; i++) {
+      this.weatherForecast.push(
+        new WeatherModel(
+          '16-03-2020',
+          '19',
+          '25',
+          '10d'
+        )
+      )
+    }
+  }
+
+  setupAutocomplete() {
     const placesAutocomplete = places({
       appId: 'plXQEW8KV1RK',
       apiKey: '3b8a62a3d5e5b4204c39109a06e1738e',
       container: document.querySelector('#address-input')
     });
 
-    placesAutocomplete.on('change', e => this.setGpsCoordinates(e) );
+    placesAutocomplete.on('change', e => this.setGpsCoordinates(e));
+  }
 
-    placesAutocomplete.on('change', e => this.setGpsCoordinates(e) );
-
-    this.weatherService.getFiveDayForecast(this.lat, this.lon).subscribe(
+  getForecast() {
+    this.weatherService.getFiveDayForecast(this.lat, this.lng).subscribe(
       res => {
         console.log(res);
+        this.weatherForecast = [];
+        
         for (let i = 0; i < res.list.length; i += 8) {
 
           let date = res.list[i].dt_txt.split(' ')[0];
@@ -53,8 +75,12 @@ export class WeatherComponent implements OnInit {
   }
 
   setGpsCoordinates(e) {
-    console.log(e.suggestion);
+    console.log(e);
 
+    this.lat = e.suggestion.latlng.lat; 
+    this.lng = e.suggestion.latlng.lng; 
+    
+    console.log(this.lat, this.lng);
   }
 
 }
