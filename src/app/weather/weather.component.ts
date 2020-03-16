@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './weather.service';
 import { WeatherModel } from './weather.model';
+import * as moment from 'moment';
 
 declare var places: any;
 
@@ -10,7 +11,6 @@ declare var places: any;
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
-
   lat = '';
   lng = '';
 
@@ -19,11 +19,9 @@ export class WeatherComponent implements OnInit {
 
   constructor(private weatherService: WeatherService) { }
 
-
   ngOnInit() {
     this.setupAutocomplete();
     //this.seedData();
-    //this.getForecast();
   }
 
   seedData() {
@@ -54,13 +52,13 @@ export class WeatherComponent implements OnInit {
       res => {
         console.log(res);
         this.weatherForecast = [];
-        
+
         for (let i = 0; i < res.list.length; i += 8) {
 
           let date = res.list[i].dt_txt.split(' ')[0];
 
           const tmp = new WeatherModel(
-            date,
+            moment(date).format("DD MMM YYYY"),
             res.list[i].main.temp_min,
             res.list[i].main.temp_max,
             res.list[i].weather[0].icon

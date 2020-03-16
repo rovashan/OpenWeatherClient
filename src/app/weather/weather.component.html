@@ -20,9 +20,10 @@
             <mat-card-content fxLayout="column" fxLayoutAlign="center center">
 
                 <img src="http://openweathermap.org/img/w/{{ weather.icon}}.png" />
-
-                <p>Min: {{ weather.min }}</p>
-                <p>Max: {{ weather.min }}</p>
+                <div>
+                    <p>Min: {{ weather.min }} &deg;</p>
+                    <p>Max: {{ weather.min }} &deg;</p>
+                </div>
             </mat-card-content>
 
         </mat-card>
